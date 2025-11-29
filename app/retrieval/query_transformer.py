@@ -9,16 +9,13 @@ class QueryTransformer:
         self.llm = ChatOpenAI(
             model=settings.LLM_MODEL,
             temperature=0,
-            api_key=settings.OPENAI_API_KEY.get_secret_value()
+            api_key=settings.OPENAI_API_KEY.get_secret_value() # type: ignore
         )
         
-        # Notebook Part 2-1: Multi-Query Prompt
+        # Multi-Query Prompt
         self.multi_query_prompt = ChatPromptTemplate.from_template(
             """You are an AI language model assistant. Your task is to generate five 
-            different versions of the given user question to retrieve relevant documents from a vector 
-            database. By generating multiple perspectives on the user question, your goal is to help
-            the user overcome some of the limitations of the distance-based similarity search. 
-            Provide these alternative questions separated by newlines.
+            different versions of the given user question to retrieve relevant documents from a vector database. By generating multiple perspectives on the user question, your goal is to help the user overcome some of the limitations of the distance-based similarity search. Provide these alternative questions separated by newlines.
             
             Original question: {question}"""
         )

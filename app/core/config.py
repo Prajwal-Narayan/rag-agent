@@ -10,7 +10,7 @@ class Settings(BaseSettings):
     PROJECT_NAME: str = "Advanced RAG Agent"
     
     # LLM Keys (Now Secure Types)
-    OPENAI_API_KEY: SecretStr  # <--- Changed from str to SecretStr
+    OPENAI_API_KEY: SecretStr  
     COHERE_API_KEY: SecretStr | None = None
     
     # LangSmith Config
@@ -31,4 +31,4 @@ class Settings(BaseSettings):
         env_file = ".env"
         extra = "ignore"
 
-settings = Settings()
+settings = Settings() # type: ignore
