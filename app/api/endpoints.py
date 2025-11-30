@@ -31,7 +31,8 @@ async def chat_endpoint(request: ChatRequest):
     # MOVED INSIDE TRY BLOCK 👇
     try:
         service = ChatService()  # If this fails, we want to know why!
-        result = await service.chat(request.message)
+        # result = # Inside chat_endpoint
+        result = await service.chat(request.message, request.thread_id)
         return result
     except Exception as e:
         # Now this will print the actual error message to your browser

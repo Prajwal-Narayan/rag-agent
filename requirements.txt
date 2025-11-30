@@ -1,0 +1,4 @@
+langgraph
+langgraph-checkpoint-postgres
+psycopg2-binary
+asyncpg  # For async database connections
